@@ -12,13 +12,12 @@ class AccountService:
 
     async def create_account(self, account_data: AccountCreate) -> AccountModel:
         """Create a new account."""
-        # Check if email already exists
-        if self.get_account_by_email(account_data.email):
-            raise ValueError("Email already registered")
+        # Check if username already exists
+        if self.get_account_by_username(account_data.username):
+            raise ValueError("Username already registered")
 
         # Create new account
         db_account = AccountModel(
-            email=account_data.email,
             username=account_data.username,
             full_name=account_data.full_name,
             hashed_password=get_password_hash(account_data.password)
@@ -34,6 +33,6 @@ class AccountService:
         """Get account by ID."""
         return self.db.query(AccountModel).filter(AccountModel.id == account_id).first()
 
-    def get_account_by_email(self, email: str) -> Optional[AccountModel]:
-        """Get account by email."""
-        return self.db.query(AccountModel).filter(AccountModel.email == email).first()
+    def get_account_by_username(self, username: str) -> Optional[AccountModel]:
+        """Get account by username."""
+        return self.db.query(AccountModel).filter(AccountModel.username == username).first()
