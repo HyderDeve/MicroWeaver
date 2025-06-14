@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  .bg-primary {
+    @apply bg-indigo-600;
+  }
+  
+  .bg-secondary {
+    @apply bg-indigo-700;
+  }
+  
+  .text-primary {
+    @apply text-indigo-600;
+  }
+  
+  .hover\:bg-secondary:hover {
+    @apply bg-indigo-700;
+  }
+}
