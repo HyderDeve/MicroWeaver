@@ -1,13 +1,10 @@
-from sqlalchemy import Column, String, DateTime
-from sqlalchemy.sql import func
-from app.core.database import Base
+from app.models.base import Base, TimestampMixin, UUIDMixin
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import String
 
-class Account(Base):
+class Account(Base, UUIDMixin, TimestampMixin):
     __tablename__ = "accounts"
 
-    email = Column(String(255), unique=True, index=True, nullable=False)
-    username = Column(String(50), unique=True, index=True, nullable=False)
-    full_name = Column(String(100))
-    hashed_password = Column(String(255), nullable=False)
-    
-    # Audit timestamps are inherited from Base class
+    username: Mapped[str] = mapped_column(String(50), unique=True, index=True, nullable=False)
+    full_name: Mapped[str] = mapped_column(String(100), nullable=True)
+    hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
