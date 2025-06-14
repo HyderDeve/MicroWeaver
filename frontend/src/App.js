@@ -99,7 +99,7 @@ function App() {
         <div className="flex-1 py-8 px-4 sm:px-6 lg:px-8 overflow-y-auto">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl font-bold text-center text-gray-900 mb-8">
-              AI Project Generator
+              MicroWeaver AI Project Generator
             </h1>
             
             <form onSubmit={handleSubmit} className="space-y-6">
